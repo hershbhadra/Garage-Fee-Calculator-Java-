@@ -1,0 +1,10 @@
+//Hersh Bhadra: This program will test the Garage fee calculator
+
+public class GarageTest 
+{
+	public static void main( String args[] )
+	{
+		Garage fee = new Garage();
+		fee.Calculator();
+	}//end main
+}//end class GarageTest

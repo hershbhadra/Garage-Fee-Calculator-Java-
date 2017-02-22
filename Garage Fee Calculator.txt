@@ -1,0 +1,38 @@
+//Hersh Bhadra: This program will calculate and display the parking charges for each customer who parked in the garage yesterday. 
+
+import java.util.Scanner;
+public class Garage 
+{
+	public void Calculator()//main method begins execution of Java application
+	{
+		Scanner input = new Scanner( System.in );// create Scanner to obtain input from command window
+		
+		double totalFees = 0.0; // total fees collected for yesterday
+		double currentFee; // fee for the current customer
+		double hours; // hours for the current customer
+		
+		System.out.print( "Enter number of hours (or -1 to QUIT): " );//read hours parked for 1st customer customer
+		hours = input.nextDouble();
+		
+		while ( hours >= 0.0 )//loop is required for user to enter next multiple users without restarting the program
+		{
+			currentFee = calculateCharges( hours );
+			totalFees += currentFee;
+			System.out.printf( "Current fee: $%.2f, Total Fees: $%.2f\n\n", currentFee, totalFees );
+			
+			System.out.print( "Enter number of hours (or -1 to QUIT): " );//read hours parked for remaining customers
+			hours = input.nextDouble();			
+		}//end while
+	}//end Calculator
+	
+	public double calculateCharges( double hours )//method to calculate charges for each customer
+	{
+		double charge = 2.0;//minimum fee to park
+		if ( hours > 3.0 )//garage charges an additional $0.50 per hour for each hour in excess of 3 hours
+			charge = 2.0 + ( hours - 3.0 ) * 0.5;//Math.ceil method returns the smallest integer which is not less than the value.
+		if (charge > 10 )
+			charge = 10.0;//The maximum charge for any given 24 hour period is $10
+		
+		return charge;
+	}//end calculateCharges
+}//end Class Garage
